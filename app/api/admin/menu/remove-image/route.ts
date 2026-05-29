@@ -1,8 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-import path from "path";
-import fs from "fs";
 import { requireAdmin } from "@/lib/admin-auth";
-import { getMenuItems, updateMenuItemImage } from "@/lib/fs-data";
+import { getMenuData, setMenuItemImage } from "@/lib/menu-store";
 
 export async function POST(req: NextRequest) {
   const unauth = await requireAdmin(req);
@@ -11,12 +9,26 @@ export async function POST(req: NextRequest) {
   const { id } = await req.json();
   if (!id) return NextResponse.json({ error: "id required" }, { status: 400 });
 
-  const item = getMenuItems().find((i) => i.id === id);
+  const items = await getMenuData();
+  const item = items.find((i) => i.id === id);
+
   if (item?.image) {
-    const filePath = path.join(process.cwd(), "public", item.image.split("?")[0]);
-    try { fs.unlinkSync(filePath); } catch { /* already gone */ }
+    if (item.image.startsWith("https://") && process.env.BLOB_READ_WRITE_TOKEN) {
+      // Delete from Vercel Blob
+      try {
+        const { del } = await import("@vercel/blob");
+        await del(item.image);
+      } catch { /* already deleted or external URL */ }
+    } else if (item.image.startsWith("/")) {
+      // Delete local file
+      try {
+        const { default: fs } = await import("fs");
+        const { default: path } = await import("path");
+        fs.unlinkSync(path.join(process.cwd(), "public", item.image.split("?")[0]));
+      } catch { /* file may not exist */ }
+    }
   }
 
-  updateMenuItemImage(id, null);
+  await setMenuItemImage(id, null);
   return NextResponse.json({ success: true });
 }

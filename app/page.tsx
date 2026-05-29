@@ -11,10 +11,10 @@ import VisitUs from "@/components/VisitUs";
 import Footer from "@/components/Footer";
 import MobileCallButton from "@/components/MobileCallButton";
 import MenuBanner from "@/components/MenuBanner";
-import { getGalleryImages } from "@/lib/fs-data";
+import { getGalleryData } from "@/lib/gallery-store";
 
-export default function Home() {
-  const galleryImages = getGalleryImages();
+export default async function Home() {
+  const galleryImages = await getGalleryData();
 
   return (
     <>

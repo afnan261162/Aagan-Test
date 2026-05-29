@@ -1,8 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-import path from "path";
-import fs from "fs";
 import { requireAdmin } from "@/lib/admin-auth";
-import { updateGallerySlot, getGalleryImages } from "@/lib/fs-data";
+import { getGalleryData, setGallerySlotUrl } from "@/lib/gallery-store";
 
 export async function POST(req: NextRequest) {
   const unauth = await requireAdmin(req);
@@ -11,14 +9,26 @@ export async function POST(req: NextRequest) {
   const { slot } = await req.json();
   if (!slot) return NextResponse.json({ error: "slot required" }, { status: 400 });
 
-  // Find current URL
-  const images = getGalleryImages();
+  const images = await getGalleryData();
   const img = images.find((i) => i.slot === slot);
+
   if (img?.url) {
-    const filePath = path.join(process.cwd(), "public", img.url.split("?")[0]);
-    try { fs.unlinkSync(filePath); } catch { /* file may not exist */ }
+    if (img.url.startsWith("https://") && process.env.BLOB_READ_WRITE_TOKEN) {
+      // Delete from Vercel Blob
+      try {
+        const { del } = await import("@vercel/blob");
+        await del(img.url);
+      } catch { /* already deleted or external URL */ }
+    } else if (img.url.startsWith("/")) {
+      // Delete local file
+      try {
+        const { default: fs } = await import("fs");
+        const { default: path } = await import("path");
+        fs.unlinkSync(path.join(process.cwd(), "public", img.url.split("?")[0]));
+      } catch { /* file may not exist */ }
+    }
   }
 
-  updateGallerySlot(slot, null);
+  await setGallerySlotUrl(slot, null);
   return NextResponse.json({ success: true });
 }

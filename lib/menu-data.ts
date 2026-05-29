@@ -84,7 +84,7 @@ export const MENU_ITEMS: MenuItem[] = [
     featured: true,
     available: true,
     prepTime: 35,
-    image: null,
+    image: "https://images.unsplash.com/photo-1598103442097-8b74394b95c3?w=800&q=80",
   },
   {
     id: "cg-02",
@@ -97,7 +97,7 @@ export const MENU_ITEMS: MenuItem[] = [
     featured: false,
     available: true,
     prepTime: 30,
-    image: null,
+    image: "https://images.unsplash.com/photo-1598103442097-8b74394b95c3?w=800&q=80",
   },
   {
     id: "cg-03",
@@ -110,7 +110,7 @@ export const MENU_ITEMS: MenuItem[] = [
     featured: true,
     available: true,
     prepTime: 25,
-    image: null,
+    image: "https://images.unsplash.com/photo-1529563021893-cc83c992d75d?w=800&q=80",
   },
   {
     id: "cg-04",
@@ -123,7 +123,7 @@ export const MENU_ITEMS: MenuItem[] = [
     featured: false,
     available: true,
     prepTime: 20,
-    image: null,
+    image: "https://images.unsplash.com/photo-1544025162-d76694265947?w=800&q=80",
   },
   {
     id: "cg-05",
@@ -136,7 +136,7 @@ export const MENU_ITEMS: MenuItem[] = [
     featured: false,
     available: true,
     prepTime: 30,
-    image: null,
+    image: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=800&q=80",
   },
   {
     id: "cg-06",
@@ -149,7 +149,7 @@ export const MENU_ITEMS: MenuItem[] = [
     featured: true,
     available: true,
     prepTime: 40,
-    image: null,
+    image: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=800&q=80",
   },
 
   // ── Signature Steaks ────────────────────────────────────────────────────────
@@ -164,7 +164,7 @@ export const MENU_ITEMS: MenuItem[] = [
     featured: true,
     available: true,
     prepTime: 25,
-    image: null,
+    image: "https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=800&q=80",
   },
   {
     id: "sk-02",
@@ -177,7 +177,7 @@ export const MENU_ITEMS: MenuItem[] = [
     featured: false,
     available: true,
     prepTime: 25,
-    image: null,
+    image: "https://images.unsplash.com/photo-1432139509613-5c4255815697?w=800&q=80",
   },
   {
     id: "sk-03",
@@ -190,7 +190,7 @@ export const MENU_ITEMS: MenuItem[] = [
     featured: false,
     available: true,
     prepTime: 25,
-    image: null,
+    image: "https://images.unsplash.com/photo-1558030006-450675393462?w=800&q=80",
   },
   {
     id: "sk-04",
@@ -203,7 +203,7 @@ export const MENU_ITEMS: MenuItem[] = [
     featured: false,
     available: true,
     prepTime: 20,
-    image: null,
+    image: "https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?w=800&q=80",
   },
 
   // ── Pakistani Classics ───────────────────────────────────────────────────────
@@ -218,7 +218,7 @@ export const MENU_ITEMS: MenuItem[] = [
     featured: true,
     available: true,
     prepTime: 25,
-    image: null,
+    image: "https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?w=800&q=80",
   },
   {
     id: "pk-02",
@@ -231,7 +231,7 @@ export const MENU_ITEMS: MenuItem[] = [
     featured: false,
     available: true,
     prepTime: 30,
-    image: null,
+    image: "https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=800&q=80",
   },
   {
     id: "pk-03",
@@ -244,7 +244,7 @@ export const MENU_ITEMS: MenuItem[] = [
     featured: false,
     available: true,
     prepTime: 20,
-    image: null,
+    image: "https://images.unsplash.com/photo-1626645738196-c2a7c87a8f58?w=800&q=80",
   },
   {
     id: "pk-04",
@@ -257,7 +257,7 @@ export const MENU_ITEMS: MenuItem[] = [
     featured: false,
     available: true,
     prepTime: 35,
-    image: null,
+    image: "https://images.unsplash.com/photo-1574484284002-952d92456975?w=800&q=80",
   },
   {
     id: "pk-05",
@@ -270,7 +270,7 @@ export const MENU_ITEMS: MenuItem[] = [
     featured: false,
     available: true,
     prepTime: 45,
-    image: null,
+    image: "https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?w=800&q=80",
   },
 
   // ── Chinese Delights ─────────────────────────────────────────────────────────
@@ -285,7 +285,7 @@ export const MENU_ITEMS: MenuItem[] = [
     featured: false,
     available: true,
     prepTime: 15,
-    image: null,
+    image: "https://images.unsplash.com/photo-1585032226651-759b368d7246?w=800&q=80",
   },
   {
     id: "ch-02",
@@ -298,7 +298,7 @@ export const MENU_ITEMS: MenuItem[] = [
     featured: false,
     available: true,
     prepTime: 20,
-    image: null,
+    image: "https://images.unsplash.com/photo-1569050467447-ce54b3bbc37d?w=800&q=80",
   },
   {
     id: "ch-03",
@@ -311,7 +311,7 @@ export const MENU_ITEMS: MenuItem[] = [
     featured: false,
     available: true,
     prepTime: 15,
-    image: null,
+    image: "https://images.unsplash.com/photo-1547592180-85f173990554?w=800&q=80",
   },
 
   // ── Rice & Biryani ────────────────────────────────────────────────────────────
@@ -326,7 +326,7 @@ export const MENU_ITEMS: MenuItem[] = [
     featured: true,
     available: true,
     prepTime: 20,
-    image: null,
+    image: "https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=800&q=80",
   },
   {
     id: "ri-02",
@@ -339,7 +339,7 @@ export const MENU_ITEMS: MenuItem[] = [
     featured: false,
     available: true,
     prepTime: 25,
-    image: null,
+    image: "https://images.unsplash.com/photo-1596797038530-2c107229654b?w=800&q=80",
   },
   {
     id: "ri-03",
@@ -352,7 +352,7 @@ export const MENU_ITEMS: MenuItem[] = [
     featured: false,
     available: true,
     prepTime: 20,
-    image: null,
+    image: "https://images.unsplash.com/photo-1512058564366-18510be2db19?w=800&q=80",
   },
 
   // ── Soups & Salads ────────────────────────────────────────────────────────────
@@ -367,7 +367,7 @@ export const MENU_ITEMS: MenuItem[] = [
     featured: false,
     available: true,
     prepTime: 10,
-    image: null,
+    image: "https://images.unsplash.com/photo-1603105037880-880cd4edfb0d?w=800&q=80",
   },
   {
     id: "so-02",
@@ -380,7 +380,7 @@ export const MENU_ITEMS: MenuItem[] = [
     featured: false,
     available: true,
     prepTime: 10,
-    image: null,
+    image: "https://images.unsplash.com/photo-1547592166-23ac45744acd?w=800&q=80",
   },
   {
     id: "so-03",
@@ -393,7 +393,7 @@ export const MENU_ITEMS: MenuItem[] = [
     featured: false,
     available: true,
     prepTime: 5,
-    image: null,
+    image: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=800&q=80",
   },
 
   // ── Desserts ──────────────────────────────────────────────────────────────────
@@ -408,7 +408,7 @@ export const MENU_ITEMS: MenuItem[] = [
     featured: false,
     available: true,
     prepTime: 5,
-    image: null,
+    image: "https://images.unsplash.com/photo-1601303516534-bf435a602c68?w=800&q=80",
   },
   {
     id: "de-02",
@@ -421,7 +421,7 @@ export const MENU_ITEMS: MenuItem[] = [
     featured: false,
     available: true,
     prepTime: 5,
-    image: null,
+    image: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800&q=80",
   },
   {
     id: "de-03",
@@ -434,7 +434,7 @@ export const MENU_ITEMS: MenuItem[] = [
     featured: false,
     available: true,
     prepTime: 15,
-    image: null,
+    image: "https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=800&q=80",
   },
 
   // ── Beverages ─────────────────────────────────────────────────────────────────
@@ -449,7 +449,7 @@ export const MENU_ITEMS: MenuItem[] = [
     featured: false,
     available: true,
     prepTime: 5,
-    image: null,
+    image: "https://images.unsplash.com/photo-1544145945-f90425340c7e?w=800&q=80",
   },
   {
     id: "bv-02",
@@ -462,7 +462,7 @@ export const MENU_ITEMS: MenuItem[] = [
     featured: false,
     available: true,
     prepTime: 3,
-    image: null,
+    image: "https://images.unsplash.com/photo-1621263764928-df1444c5e859?w=800&q=80",
   },
   {
     id: "bv-03",
@@ -475,7 +475,7 @@ export const MENU_ITEMS: MenuItem[] = [
     featured: false,
     available: true,
     prepTime: 5,
-    image: null,
+    image: "https://images.unsplash.com/photo-1553361371-9b22f78e8b1d?w=800&q=80",
   },
   {
     id: "bv-04",
@@ -487,7 +487,7 @@ export const MENU_ITEMS: MenuItem[] = [
     featured: false,
     available: true,
     prepTime: 1,
-    image: null,
+    image: "https://images.unsplash.com/photo-1548839140-29a749e1cf4d?w=800&q=80",
   },
 ];
 
