@@ -12,7 +12,7 @@
     "featured": true,
     "available": true,
     "prepTime": 35,
-    "image": "/images/menu/cg-01.jpg"
+    "image": "https://images.unsplash.com/photo-1598103442097-8b74394b95c3?w=800&q=80"
   },
   {
     "id": "cg-02",
@@ -26,7 +26,7 @@
     "featured": false,
     "available": true,
     "prepTime": 30,
-    "image": "/images/menu/cg-02.jpg"
+    "image": "https://images.unsplash.com/photo-1598103442097-8b74394b95c3?w=800&q=80"
   },
   {
     "id": "cg-03",
