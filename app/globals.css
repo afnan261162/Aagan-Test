@@ -104,3 +104,32 @@
 .scroll-bounce {
   animation: bounce-down 2s ease-in-out infinite;
 }
+
+/* ── Hero entrance animation ─────────────────────────────────────────────── */
+@keyframes heroFadeIn {
+  0%   { opacity: 0; transform: translateY(28px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.animate-heroFadeIn {
+  animation: heroFadeIn 1s cubic-bezier(0.22, 1, 0.36, 1) 0.2s both;
+}
+
+/* ── Section fade-in (reusable) ──────────────────────────────────────────── */
+@keyframes fadeInUp {
+  0%   { opacity: 0; transform: translateY(24px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.8s ease-out both;
+}
+
+.animate-fadeInUp {
+  animation: fadeInUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
