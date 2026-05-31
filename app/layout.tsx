@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Playfair_Display, Inter, Dancing_Script } from "next/font/google";
 import "./globals.css";
 import GlobalListeners from "@/components/GlobalListeners";
+import ProgressBar from "@/components/ProgressBar";
 
 const playfair = Playfair_Display({
   variable: "--font-playfair",
@@ -53,6 +54,7 @@ export default function RootLayout({
       className={`${playfair.variable} ${inter.variable} ${dancing.variable}`}
     >
       <body className="antialiased">
+        <ProgressBar />
         {children}
         <GlobalListeners />
       </body>

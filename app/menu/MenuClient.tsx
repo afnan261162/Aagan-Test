@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ChevronLeft, Clock, Flame, UtensilsCrossed } from "lucide-react";
 import Navbar from "@/components/Navbar";
+import { useInView } from "@/lib/useInView";
 import {
   MENU_CATEGORIES,
   TAG_STYLES,
@@ -43,16 +44,17 @@ function CategoryNav({
       className="flex gap-2 overflow-x-auto px-4 sm:px-6 lg:px-8 pb-1"
       style={{ scrollbarWidth: "none" }}
     >
-      {MENU_CATEGORIES.map((cat) => (
+      {MENU_CATEGORIES.map((cat, idx) => (
         <button
           key={cat.id}
           data-cat={cat.id}
           onClick={() => onSelect(cat.id)}
-          className={`flex-shrink-0 flex items-center gap-2 px-4 py-2.5 rounded-full text-sm font-medium transition-all duration-200 border min-h-[44px] ${
+          className={`flex-shrink-0 flex items-center gap-2 px-4 py-2.5 rounded-full text-sm font-medium transition-all duration-200 border min-h-[44px] animate-fadeInUp ${
             active === cat.id
               ? "bg-[#C8860A] text-[#1C1710] border-[#C8860A] shadow-lg shadow-[#C8860A]/20"
               : "bg-[#1C1710] border-[#C8860A]/20 text-[#A0916F] hover:text-[#F5E6C8] hover:border-[#C8860A]/40"
           }`}
+          style={{ animationDelay: `${idx * 0.04}s` }}
         >
           <span className="text-base leading-none">{cat.icon}</span>
           <span className="whitespace-nowrap">{cat.label}</span>
@@ -80,7 +82,7 @@ function TagChip({ tag }: { tag: MenuTag }) {
 
 function MenuItemCard({ item }: { item: MenuItem }) {
   return (
-    <div className="group bg-[#2C2210] hover:bg-[#332815] border border-[#C8860A]/10 hover:border-[#C8860A]/30 rounded-xl overflow-hidden transition-all duration-200 flex flex-col">
+    <div className="group bg-[#2C2210] hover:bg-[#332815] border border-[#C8860A]/10 hover:border-[#C8860A]/30 rounded-xl overflow-hidden transition-all duration-200 hover:scale-[1.02] hover:shadow-lg flex flex-col">
       {/* Image / placeholder */}
       <div className="relative h-[160px] sm:h-[180px] w-full flex-shrink-0">
         {item.image ? (
@@ -118,7 +120,7 @@ function MenuItemCard({ item }: { item: MenuItem }) {
           <h3 className="text-[#F5E6C8] font-semibold text-sm leading-snug line-clamp-2 group-hover:text-white transition-colors">
             {item.name}
           </h3>
-          <span className="flex-shrink-0 text-[#C8860A] font-bold text-base leading-none pt-0.5">
+          <span className="flex-shrink-0 text-[#C8860A] font-bold text-base leading-none pt-0.5 group-hover:text-amber-400 transition-colors">
             Rs {item.price.toLocaleString()}
           </span>
         </div>
@@ -158,23 +160,40 @@ function CategorySection({
   const items = allItems.filter((i) => i.category === categoryId && i.available);
   if (items.length === 0) return null;
 
+  // Separate ref for animation trigger — won't interfere with parent's sectionRef
+  const { ref: animRef, inView } = useInView(0.05);
+
   return (
     <section id={`section-${categoryId}`} ref={sectionRef} className="scroll-mt-32">
-      <div className="flex items-center gap-3 mb-6">
-        <span className="text-3xl leading-none">{cat.icon}</span>
-        <div>
-          <h2 className="text-[#F5E6C8] font-[family-name:var(--font-playfair)] text-2xl font-semibold">
-            {cat.label}
-          </h2>
-          <p className="text-[#A0916F] text-xs mt-0.5">{cat.description}</p>
+      <div ref={animRef}>
+        {/* Section heading */}
+        <div
+          className={`flex items-center gap-3 mb-6 transition-opacity ${
+            inView ? "animate-fadeInUp" : "opacity-0"
+          }`}
+        >
+          <span className="text-3xl leading-none">{cat.icon}</span>
+          <div>
+            <h2 className="text-[#F5E6C8] font-[family-name:var(--font-playfair)] text-2xl font-semibold">
+              {cat.label}
+            </h2>
+            <p className="text-[#A0916F] text-xs mt-0.5">{cat.description}</p>
+          </div>
+          <div className="ml-auto h-px flex-1 bg-gradient-to-r from-[#C8860A]/30 to-transparent max-w-[140px]" />
         </div>
-        <div className="ml-auto h-px flex-1 bg-gradient-to-r from-[#C8860A]/30 to-transparent max-w-[140px]" />
-      </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        {items.map((item) => (
-          <MenuItemCard key={item.id} item={item} />
-        ))}
+        {/* Cards with staggered scaleIn */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {items.map((item, idx) => (
+            <div
+              key={item.id}
+              className={inView ? "animate-scaleIn" : "opacity-0"}
+              style={{ animationDelay: `${Math.min(idx, 8) * 0.07}s` }}
+            >
+              <MenuItemCard item={item} />
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
@@ -233,20 +252,20 @@ export default function MenuClient({ items }: { items: MenuItem[] }) {
         />
         <Link
           href="/"
-          className="inline-flex items-center gap-1.5 text-[#A0916F] hover:text-[#C8860A] text-sm mb-5 transition-colors"
+          className="inline-flex items-center gap-1.5 text-[#A0916F] hover:text-[#C8860A] text-sm mb-5 transition-colors animate-fadeIn"
         >
           <ChevronLeft size={14} />
           Back to Home
         </Link>
         <div className="relative">
-          <span className="inline-flex items-center gap-2 text-[#C8860A] text-xs font-semibold tracking-[0.2em] uppercase mb-3">
+          <span className="inline-flex items-center gap-2 text-[#C8860A] text-xs font-semibold tracking-[0.2em] uppercase mb-3 animate-fadeIn animate-delay-100">
             <Flame size={12} />
             Our Full Menu
           </span>
-          <h1 className="font-[family-name:var(--font-playfair)] text-[clamp(28px,6vw,48px)] font-bold text-[#F5E6C8] mb-3 px-4">
+          <h1 className="font-[family-name:var(--font-playfair)] text-[clamp(28px,6vw,48px)] font-bold text-[#F5E6C8] mb-3 px-4 animate-fadeInDown animate-delay-200">
             What We Serve
           </h1>
-          <p className="text-[#A0916F] text-sm max-w-lg mx-auto px-4">
+          <p className="text-[#A0916F] text-sm max-w-lg mx-auto px-4 animate-fadeInUp animate-delay-300">
             Rooftop dining at Xin Mall, Sargodha &mdash; dine-in only.
             Freshly prepared to order.
           </p>

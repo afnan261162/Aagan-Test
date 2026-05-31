@@ -7,7 +7,10 @@ import path from "path";
 import { MENU_ITEMS, type MenuItem } from "./menu-data";
 import { DEFAULT_GALLERY, type GalleryImage } from "./gallery-data";
 
-const DATA_DIR = path.join(process.cwd(), "data");
+// On Vercel (read-only FS) write to /tmp; locally write to project data/
+const DATA_DIR = process.env.VERCEL
+  ? path.join("/tmp", "aangan-data")
+  : path.join(process.cwd(), "data");
 
 function filePath(name: string) {
   return path.join(DATA_DIR, name);
